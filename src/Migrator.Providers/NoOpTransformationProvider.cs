@@ -1,6 +1,6 @@
 using System.Data;
 using Migrator.Framework;
-using ForeignKeyConstraint=Migrator.Framework.ForeignKeyConstraint;
+using ForeignKeyConstraint = Migrator.Framework.ForeignKeyConstraint;
 using System.Collections.Generic;
 
 namespace Migrator.Providers
@@ -10,20 +10,21 @@ namespace Migrator.Providers
     /// </summary>
     public class NoOpTransformationProvider : ITransformationProvider
     {
-        
+
         public static readonly NoOpTransformationProvider Instance = new NoOpTransformationProvider();
-        
+
         private NoOpTransformationProvider()
         {
 
         }
+        public int CommandTimeout { get; set; }
 
         public virtual ILogger Logger
         {
             get { return null; }
             set { }
         }
-        
+
         public Dialect Dialect
         {
             get { return null; }
@@ -43,17 +44,17 @@ namespace Migrator.Providers
         {
             return null;
         }
-        
+
         public void RemoveForeignKey(string table, string name)
         {
             // No Op
         }
-        
-        public void RemoveConstraint(string table, string name) 
+
+        public void RemoveConstraint(string table, string name)
         {
             // No Op
         }
-        
+
         public void AddTable(string name, params Column[] columns)
         {
             // No Op
@@ -68,12 +69,12 @@ namespace Migrator.Providers
         {
             // No Op
         }
-        
+
         public void RenameTable(string oldName, string newName)
         {
             // No Op
         }
-        
+
         public void RenameColumn(string tableName, string oldColumnName, string newColumnName)
         {
             // No Op
@@ -174,9 +175,9 @@ namespace Migrator.Providers
         public void AddForeignKey(string name, string primaryTable, string[] primaryColumns, string refTable,
                                           string[] refColumns, ForeignKeyConstraint constraint)
         {
-           // No Op
+            // No Op
         }
-        
+
         public void AddUniqueConstraint(string name, string table, params string[] columns)
         {
             // No Op
@@ -191,13 +192,13 @@ namespace Migrator.Providers
         {
             return false;
         }
-        
+
         public void ChangeColumn(string table, Column column)
         {
             // No Op
         }
-        
-        
+
+
         public bool PrimaryKeyExists(string table, string name)
         {
             return false;
@@ -237,13 +238,13 @@ namespace Migrator.Providers
         {
             return null;
         }
-        
-        public int Update(string table, string[] columns, string[] columnValues) 
+
+        public int Update(string table, string[] columns, string[] columnValues)
         {
             return 0;
         }
-        
-        public int Update(string table, string[] columns, string[] columnValues, string where) 
+
+        public int Update(string table, string[] columns, string[] columnValues, string where)
         {
             return 0;
         }
@@ -285,22 +286,22 @@ namespace Migrator.Providers
 
         public void MigrationApplied(long version)
         {
-        	//no op
+            //no op
         }
 
         public void MigrationUnApplied(long version)
         {
-        	//no op
+            //no op
         }
-        
+
         public List<long> AppliedMigrations
         {
-        	get { return new List<long>(); }
+            get { return new List<long>(); }
         }
 
         protected void CreateSchemaInfoTable()
         {
- 
+
         }
 
         public void AddColumn(string table, Column column)

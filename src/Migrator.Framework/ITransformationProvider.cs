@@ -21,6 +21,7 @@ namespace Migrator.Framework
         List<long> AppliedMigrations { get; }
         
         ILogger Logger { get; set; }
+        int CommandTimeout { get; set; }
 
         /// <summary>
         /// Add a column to an existing table

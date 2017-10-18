@@ -42,7 +42,9 @@ namespace Migrator.Providers
 			_dialect = dialect;
 			_connectionString = connectionString;
 			_logger = new Logger(false);
+            CommandTimeout = 60;
 		}
+        public int CommandTimeout { get; set; }
 
 		/// <summary>
 		/// Returns the event logger
@@ -569,6 +571,7 @@ namespace Migrator.Providers
 		    IDbCommand cmd = _connection.CreateCommand();
             cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
+            cmd.CommandTimeout = CommandTimeout;
             if (_transaction != null)
             {
                 cmd.Transaction = _transaction;
